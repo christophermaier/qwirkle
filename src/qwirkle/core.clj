@@ -259,15 +259,14 @@
       (nearest-open board new-position direction)
       new-position)))
 
-;; self-recursion should be fine here, since we'll never go beyond 5 iterations.
 (defn traverse-tiles
-  ([board position direction]
-   (traverse-tiles board position direction #{}))
-  ([board position direction acc]
-   (let [new-position (direction position)]
-     (if-let [tile (tile-at-position board new-position)]
-       (traverse-tiles board new-position direction (conj acc tile))
-       acc))))
+  [board position direction]
+  (loop [p position
+         acc #{}]
+    (let [new-position (direction p)]
+      (if-let [tile (tile-at-position board new-position)]
+        (recur new-position (conj acc tile))
+        acc))))
 
 (defn- tiles-in-line
   [board position dir1 dir2]
