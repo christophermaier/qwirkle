@@ -1,5 +1,5 @@
 (defproject qwirkle "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
+  :description "Implementation of the table-top tile-laying game Qwirkle"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}

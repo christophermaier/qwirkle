@@ -133,19 +133,19 @@
                        (tile :red :circle)
                        [0 0]))
         "Adding one tile appropriately updates a fresh board"))
-  (testing "tile-at-position"
+  (testing "tile-at"
     (is (= (tile :red :circle)
-           (tile-at-position board-with-one-tile [0 0]))
+           (tile-at board-with-one-tile [0 0]))
         "Returns a tile at the position, when it exists")
-    (is (nil? (tile-at-position (board) [0 0]))
+    (is (nil? (tile-at (board) [0 0]))
         "Returns nil when no tile ie present at the given position"))
   (testing "tile-allowed-at-position"
-    (is (every? #(tile-allowed-at-position? (board) % [0 0])
+    (is (every? #(tile-allowed-at? (board) % [0 0])
                 all-tiles)
         "All tiles are allowed at the first position")
-    (is (tile-allowed-at-position? board-with-one-tile (tile :red :square) [0 1])
+    (is (tile-allowed-at? board-with-one-tile (tile :red :square) [0 1])
         "returns 'true' for a tile that is allowed")
-    (is (not (tile-allowed-at-position? board-with-one-tile (tile :blue :square) [0 1]))
+    (is (not (tile-allowed-at? board-with-one-tile (tile :blue :square) [0 1]))
         "returns 'false' for a tile that is not allowed"))
   (testing "close-position"
     (is (= {:open-positions {} :taken-positions {}}
